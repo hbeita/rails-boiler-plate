@@ -2,10 +2,21 @@ version: '3'
 services:
   db:
     image: postgres:latest
+    container_name: postgres.dev
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
+    container_name: church-app.dev
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=postgres.dev
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
@@ -13,3 +24,4 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    restart: unless-stopped
