@@ -2,7 +2,7 @@ version: '3'
 services:
   db:
     image: postgres:latest
-    container_name: postgres.dev
+    container_name: postgres.app
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -16,7 +16,7 @@ services:
     environment:
       - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_HOST=postgres.dev
+      - POSTGRES_HOST=postgres.app
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
