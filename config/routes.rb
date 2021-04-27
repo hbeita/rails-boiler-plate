@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :people
   namespace :membership do
     resources :church_services
   end
