@@ -1,7 +1,11 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class Membership::ChurchServiceTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+require 'test_helper'
+
+module Membership
+  class ChurchServiceTest < ActiveSupport::TestCase
+    # test "the truth" do
+    #   assert true
+    # end
+  end
 end

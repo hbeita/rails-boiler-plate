@@ -1,43 +1,47 @@
-require "application_system_test_case"
+# frozen_string_literal: true
 
-class Membership::ChurchServicesTest < ApplicationSystemTestCase
-  setup do
-    @membership_church_service = membership_church_services(:one)
-  end
+require 'application_system_test_case'
 
-  test "visiting the index" do
-    visit membership_church_services_url
-    assert_selector "h1", text: "Membership/Church Services"
-  end
-
-  test "creating a Church service" do
-    visit membership_church_services_url
-    click_on "New Membership/Church Service"
-
-    fill_in "Date", with: @membership_church_service.date
-    click_on "Create Church service"
-
-    assert_text "Church service was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a Church service" do
-    visit membership_church_services_url
-    click_on "Edit", match: :first
-
-    fill_in "Date", with: @membership_church_service.date
-    click_on "Update Church service"
-
-    assert_text "Church service was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Church service" do
-    visit membership_church_services_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+module Membership
+  class ChurchServicesTest < ApplicationSystemTestCase
+    setup do
+      @membership_church_service = membership_church_services(:one)
     end
 
-    assert_text "Church service was successfully destroyed"
+    test 'visiting the index' do
+      visit membership_church_services_url
+      assert_selector 'h1', text: 'Membership/Church Services'
+    end
+
+    test 'creating a Church service' do
+      visit membership_church_services_url
+      click_on 'New Membership/Church Service'
+
+      fill_in 'Date', with: @membership_church_service.date
+      click_on 'Create Church service'
+
+      assert_text 'Church service was successfully created'
+      click_on 'Back'
+    end
+
+    test 'updating a Church service' do
+      visit membership_church_services_url
+      click_on 'Edit', match: :first
+
+      fill_in 'Date', with: @membership_church_service.date
+      click_on 'Update Church service'
+
+      assert_text 'Church service was successfully updated'
+      click_on 'Back'
+    end
+
+    test 'destroying a Church service' do
+      visit membership_church_services_url
+      page.accept_confirm do
+        click_on 'Destroy', match: :first
+      end
+
+      assert_text 'Church service was successfully destroyed'
+    end
   end
 end

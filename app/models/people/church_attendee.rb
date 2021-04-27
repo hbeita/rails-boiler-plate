@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module People
   class ChurchAttendee < Person
     def self.model_name
