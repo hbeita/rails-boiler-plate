@@ -1,9 +1,4 @@
 const { environment } = require('@rails/webpacker')
-const { VueLoaderPlugin } = require('vue-loader')
-const vue = require('./loaders/vue')
-
-environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
-environment.loaders.prepend('vue', vue)
 
 environment.config.merge({
   module: {
@@ -11,7 +6,6 @@ environment.config.merge({
       {
         test: /\.s(c|a)ss$/,
         use: [
-          'vue-style-loader',
           'css-loader',
           {
             loader: 'sass-loader',
