@@ -4,20 +4,29 @@
 // to the head of your layout file,
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
-
-import Vue from 'vue'
+/*
+import { createApp } from 'vue'
 import App from '../app.vue'
 import vuetify from '../plugins/vuetify'
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    vuetify,
-    render: h => h(App),
-  }).$mount()
-  document.body.appendChild(app.$el)
-
-  console.log(app)
+const app = createApp({
+  inject: ['user'],
+  template: `
+    <div>
+      {{ user }}
+    </div>
+  `
 })
+*/
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     vuetify,
+//     render: h => h(App),
+//   }).$mount()
+//   document.body.appendChild(app.$el)
+
+//   console.log(app)
+// })
 
 
 // The above code uses Vue without the compiler, which means you cannot

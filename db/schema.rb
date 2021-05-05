@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_021100) do
+ActiveRecord::Schema.define(version: 2021_04_28_040721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "membership_church_service_attendees", force: :cascade do |t|
+    t.bigint "membership_church_service_id"
+    t.bigint "person_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["membership_church_service_id"], name: "idx_church_attendee_service"
+    t.index ["person_id"], name: "idx_church_attendee_person"
+  end
+
+  create_table "membership_church_services", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.date "birthday"
+    t.string "address"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +53,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_021100) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "membership_church_service_attendees", "membership_church_services"
+  add_foreign_key "membership_church_service_attendees", "people"
 end
